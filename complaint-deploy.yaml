@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: complaint-api-service 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: complaint-api-service
+  template:
+    metadata:
+      labels:
+        app: complaint-api-service
+    spec:
+      containers:
+      - name: complaint-api-service
+        image: poseidon2022/complaintservice
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
